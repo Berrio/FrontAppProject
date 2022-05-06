@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef } from "react";
-import { Store } from './StoreProvider'
+import { Store } from "../StateManager/StoreProvider";
 
 const Form = () => {
 
@@ -16,7 +16,7 @@ const Form = () => {
                 message,
                 done:false
             }
-            let noteSavePromise = await fetch(`http://localhost:8081/api/save/note`,
+            let noteSavePromise = await fetch(`http://localhost:8081/api/create/category`,
                 {
                     method: 'POST',
                     headers: {
@@ -37,9 +37,9 @@ const Form = () => {
 
     const { state, dispatch } = useContext(Store)
 
-    const [title, setTitle] = useState('');
+    const [message, setTitle] = useState('');
 
-    const [message, setMessage] = useState('');
+    const [title, setMessage] = useState('');
 
     const addingTitle = (e) => {
         setTitle(e.target.value)

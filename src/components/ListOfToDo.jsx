@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Store } from "./StoreProvider";
+import { Store } from "../StateManager/StoreProvider";
 
 const ListOfToDo =()=>{
 
@@ -20,7 +20,7 @@ const ListOfToDo =()=>{
     },[])
 
     const fetchAllNotes=async()=>{
-        let response=await fetch(`http://localhost:8081/api/get/notes`)
+        let response=await fetch(`http://localhost:8081/api/`)
         let data= await response.json()
         return data;
     }
@@ -49,7 +49,7 @@ let noteUpdated=await noteUpdatedPromise.json()
     }
 
     const onDelete = async(note) => {
-        let response=await fetch(`http://localhost:8081/api/delete/note/${note.id}`,
+        let response=await fetch(`http://localhost:8081/api/delete/category/${note.id}`,
         {
             method: 'DELETE',
             })
@@ -66,6 +66,7 @@ let noteUpdated=await noteUpdatedPromise.json()
         <div>
             <ul>
             {state.listOfNotes.map(note =>{
+                console.log(note)
                 return <li style={note.done? {textDecoration: 'line-through'}:{}}key={note.id}>
                     {note.title}<br />
                     {note.message}<br />

@@ -2,7 +2,7 @@ import React, { createContext,useReducer } from "react";
 import reducer from "./Reducer";
 
 const initialState={
-    note:{
+    category:{
         id:'',
         title:'',
         message:'',
