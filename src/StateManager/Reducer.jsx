@@ -2,6 +2,14 @@ import React from "react";
 
 function reducer(state,action){
     switch(action.type){
+        case 'add-category':
+            const newCategory = action.payload;
+            const newListOfCategoriesAddedOne = [...state.listOfCategories, newCategory]
+            const newStateAddedCategory = {
+                ...state, listOfCategories: newListOfCategoriesAddedOne
+            }
+            return newStateAddedCategory
+
         case 'get-notes':
         const stateWithAllTheNotes={
             ...state,

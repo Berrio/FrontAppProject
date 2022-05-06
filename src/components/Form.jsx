@@ -26,7 +26,7 @@ const Form = () => {
         })
 
         let noteSaved = await noteSavePromise.json();
-        console.log(noteSaved)
+        console.log("ntooa"+noteSaved)
             dispatch({
                 type: 'add-note',
                 payload: noteSaved

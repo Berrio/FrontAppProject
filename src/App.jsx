@@ -12,10 +12,7 @@ function App() {
     <Category>
       <StoreProvider>
         <Form></Form>
-
-        <ListOfToDo>
-
-        </ListOfToDo>
+          <Category/>
       </StoreProvider>
     </Category>
 
