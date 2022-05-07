@@ -1,21 +1,20 @@
 import { useState } from 'react'
 import StoreProvider from './StateManager/StoreProvider'
 import './App.css'
-import ListOfToDo from './components/ListOfToDo'
 import Form from './components/Form'
 
 import Category from './components/Category'
+import ListOfCategories from './components/ListOfCategories'
 
 function App() {
 
   return (
+    <StoreProvider>
     <Category>
-      <StoreProvider>
-        <Form></Form>
-          <Category/>
-      </StoreProvider>
+        <Form />
+        <ListOfCategories />
     </Category>
-
+    </StoreProvider>
 
   )
 }
