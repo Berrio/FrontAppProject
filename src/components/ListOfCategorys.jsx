@@ -11,7 +11,7 @@ const ListOfToDo =()=>{
             notes=>{
                 // console.log(fetchAllNotes)
                 let action={
-                    type:'get-notes',
+                    type:'get-categorys',
                     payload:notes
                 }
                 dispatch(action)
@@ -20,7 +20,7 @@ const ListOfToDo =()=>{
     },[])
 
     const fetchAllNotes=async()=>{
-        let response=await fetch(`http://localhost:8081/api/get/notes`)
+        let response=await fetch(`http://localhost:8081/api/`)
         let data= await response.json()
         return data;
     }
@@ -49,7 +49,7 @@ let noteUpdated=await noteUpdatedPromise.json()
     }
 
     const onDelete = async(note) => {
-        let response=await fetch(`http://localhost:8081/api/delete/note/${note.id}`,
+        let response=await fetch(`http://localhost:8081/api/delete/category/${note.id}`,
         {
             method: 'DELETE',
             })
@@ -65,12 +65,11 @@ let noteUpdated=await noteUpdatedPromise.json()
     return(
         <div>
             <ul>
-            {state.listOfNotes.map(note =>{
-                return <li style={note.done? {textDecoration: 'line-through'}:{}}key={note.id}>
-                    {note.title}<br />
-                    {note.message}<br />
-                    <input onChange={(e)=>onCheckBox(e,note)} type="checkbox" checked={note.done}/>
-                    <button onClick={(e) => onDelete(note)}>Delete</button>
+            {state.listOfCategorys.map(category =>{
+                return <li key={category.id}>
+                    {category.id}<br />
+                    {category.category}<br />
+                    <button onClick={(e) => onDelete(category)}>Delete</button>
                 </li>
             })}
             </ul>

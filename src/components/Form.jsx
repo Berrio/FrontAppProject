@@ -8,15 +8,11 @@ const Form = () => {
   
     const onAdd = async (event) => {
         event.preventDefault();
-        console.log(title)
-        console.log(message)
-        if (title && message) {
+        if (category) {
             const noteFromForm={
-                title,
-                message,
-                done:false
+                category
             }
-            let noteSavePromise = await fetch(`http://localhost:8081/api/save/note`,
+            let noteSavePromise = await fetch(`http://localhost:8081/api/create/category`,
                 {
                     method: 'POST',
                     headers: {
@@ -37,25 +33,20 @@ const Form = () => {
 
     const { state, dispatch } = useContext(Store)
 
-    const [title, setTitle] = useState('');
 
-    const [message, setMessage] = useState('');
+    const [category, setCategory] = useState('');
 
-    const addingTitle = (e) => {
-        setTitle(e.target.value)
-    }
-    const addingMessage = (e) => {
-        setMessage(e.target.value)
+
+    const addingCategory = (e) => {
+        setCategory(e.target.value)
     }
 
 
     return (
         <form ref={formRef}>
-            <label >title</label>
-            <input onChange={addingTitle} type="text" name="title" />
-            <label >Message</label>
-            <input onChange={addingMessage} type="text" name="message" />
-            <button onClick={onAdd}>Add note</button>
+
+            <input onChange={addingCategory} type="text" name="message" />
+            <button onClick={onAdd}>Add Category</button>
         </form>
     )
 }
