@@ -24,9 +24,9 @@ function reducer(state, action) {
             return stateWithAllTheNotes
         case 'add-note':
             const newNote = action.payload;
-            const newListOfNotesAddedOne = [...state.listOfNotes, newNote]
+            const newListOfNotesAddedOne = [...state.listOfCategories, newNote]
             const newStateAddNote = {
-                ...state, listOfNotes: newListOfNotesAddedOne
+                ...state, listOfCategories: newListOfNotesAddedOne
             }
             return newStateAddNote
         case 'remove-task':

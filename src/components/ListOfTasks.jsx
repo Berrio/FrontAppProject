@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Store } from './StoreProvider'
 
+
 const ListOfTasks = (props) => {
 
     const { state, dispatch } = useContext(Store)
@@ -11,7 +12,6 @@ const ListOfTasks = (props) => {
                 method: 'DELETE'
             })
         if (response.status === 200) {
-            console.log("entro")
             dispatch({
                 type: 'remove-task',
                 payload: idtask
@@ -20,17 +20,19 @@ const ListOfTasks = (props) => {
     }
 
     return (
-        <div className='card'>
+        <div className='card '>
             {props.tasks.map(task => {
                 return <div className="" key={task.id}>
                     <div>{task.id}<h5>{task.task}</h5> </div>
                     <div></div>
-                    <div className=""><input onChange={(event) => onCheckbox(event, task)} type="checkbox" checked={task.complete} />complete?</div>
+                    
+                    <div className="align-items-center"><input  onChange={(event) => onCheckbox(event, task)} type="checkbox" id="complete" checked={task.complete} />
+                    <label className="ms-2 " htmlFor="complete ">complete?</label>  </div>
                     <div className="" style={task.complete ? { textDecoration: 'line-through' } : {}}> </div>
                     <div className="">
-                        <div className="">
-                            <button className="btn btn-secondary" onClick={() => {}}>Editar<i className=""></i> </button>
-                            <button className="btn btn-warning" onClick={() => onDelete(task)}>Delete<i className=""></i> </button>
+                        <div className="card ">
+                            <button className=" btn btn-secondary mt-1" onClick={() => {}}>Editar<i className=""></i> </button>
+                            <button className="btn btn-warning mt-2" onClick={() => onDelete(task)}>Delete<i className=""></i> </button>
                         </div>
                     </div>
                 </div>

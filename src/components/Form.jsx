@@ -5,11 +5,11 @@ const Form = () => {
 
     const formRef = useRef(null)
 
-  
+
     const onAdd = async (event) => {
         event.preventDefault();
         if (category) {
-            const noteFromForm={
+            const noteFromForm = {
                 category
             }
             let noteSavePromise = await fetch(`http://localhost:8081/api/create/category`,
@@ -18,11 +18,11 @@ const Form = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body:JSON.stringify(noteFromForm)
-        })
+                    body: JSON.stringify(noteFromForm)
+                })
 
-        let noteSaved = await noteSavePromise.json();
-        console.log(noteSaved)
+            let noteSaved = await noteSavePromise.json();
+            console.log(noteSaved)
             dispatch({
                 type: 'add-note',
                 payload: noteSaved
@@ -45,8 +45,10 @@ const Form = () => {
     return (
         <form ref={formRef}>
 
-            <input onChange={addingCategory} type="text" name="message" />
-            <button className="btn btn-success" onClick={onAdd}>Add Category</button>
+            <div className="input-group mb-3">
+                <input onChange={addingCategory} name="message" type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+                    <button onClick={onAdd} className="btn btn-success" type="button" id="button-addon2">Add Category</button>
+            </div>
         </form>
     )
 }
