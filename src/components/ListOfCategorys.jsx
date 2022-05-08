@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Store } from "./StoreProvider";
+import ListOfTasks from "./ListOfTasks";
 
 const ListOfToDo =()=>{
 
@@ -63,14 +64,18 @@ let noteUpdated=await noteUpdatedPromise.json()
         
    }
     return(
-        <div>
+        <div className="card">
             <ul>
             {state.listOfCategorys.map(category =>{
                 return <li key={category.id}>
-                    {category.id}<br />
-                    {category.category}<br />
-                    <button onClick={(e) => onDelete(category)}>Delete</button>
+                    {category.id}
+                    <h3>Category Name:</h3> <h4>{category.category}</h4><br />
+                    <button className="btn btn-danger" onClick={(e) => onDelete(category)}>Delete</button>
+                    <div className="card-body">
+                        <ListOfTasks notes={category.listTask} />
+                    </div>
                 </li>
+
             })}
             </ul>
         </div>
