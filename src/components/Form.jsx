@@ -46,7 +46,7 @@ const Form = () => {
         <form ref={formRef}>
 
             <div className="input-group mb-3">
-                <input onChange={addingCategory} name="message" type="text" className="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+                <input onChange={addingCategory} name="message" type="text" className="form-control" placeholder="Add new Category" aria-label="Recipient's username" aria-describedby="button-addon2"/>
                     <button onClick={onAdd} className="btn btn-success" type="button" id="button-addon2">Add Category</button>
             </div>
         </form>

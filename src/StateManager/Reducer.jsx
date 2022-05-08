@@ -17,22 +17,18 @@ function reducer(state, action) {
             return stateWithTasks
 
         case 'get-notes':
-            const stateWithAllTheNotes = {
+            const stateWithAllTheTask = {
                 ...state,
-                listOfNotes: action.payload
+                listOfCategories: action.payload
             }
-            return stateWithAllTheNotes
-        case 'add-note':
-            const newNote = action.payload;
-            const newListOfNotesAddedOne = [...state.listOfCategories, newNote]
-            const newStateAddNote = {
-                ...state, listOfCategories: newListOfNotesAddedOne
-            }
-            return newStateAddNote
-        case 'remove-task':
-            const newListofTasksWithoutPayloadTask = state.listOfCategories.filter(task => task.id !== action.payload.id)
-            const newStateWithTaskDeleted = { ...state, listOfCategories: newListofTasksWithoutPayloadTask }
-            return newStateWithTaskDeleted
+            return stateWithAllTheTask
+
+            case 'remove-task':
+                const newListOfNotesWithoutPayloadNote = state.listOfCategories.map(category => {
+                    const deleteFromList = category.listTask.filter(task => task.id !== action.payload.id)
+                    return { ...category, listTask: deleteFromList }
+                })
+            return { ...state, listOfCategories: newListOfNotesWithoutPayloadNote }
         case 'update-note':
             const newListofNotes = state.listOfNotes.map(note => {
                 if (note.id == action.payload.id) {
@@ -43,7 +39,6 @@ function reducer(state, action) {
 
             const newStateModifiedCheckbox = { ...state, listOfNotes: newListofNotes }
             return newStateModifiedCheckbox
-
     }
 }
 

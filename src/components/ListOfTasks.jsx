@@ -19,24 +19,55 @@ const ListOfTasks = (props) => {
         }
     }
 
+    const onCheckBox = async (e, task) => {
+        const checked = e.currentTarget.checked;
+
+        let noteWithCheckedboxInformation = {
+            ...task,
+            complete: checked
+        }
+
+        let noteUpdatedPromise = await fetch(`http://localhost:8081/api/update/task`,
+            {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(noteWithCheckedboxInformation)
+            })
+
+        let noteUpdated = await noteUpdatedPromise.json()
+
+        dispatch({
+            type: 'update-task',
+            payload: noteUpdated
+        })
+    }
+
+
+
     return (
         <div className='card '>
-            {props.tasks.map(task => {
+            {props.tasks.listTask.map(task => {
                 return <div className="" key={task.id}>
-                    <div>{task.id}<h5>{task.task}</h5> </div>
+                    <div>{task.id}
+                        <li style={task.complete ? { textDecoration: 'line-through' } : {}}><h5>{task.task}</h5></li>
+                    </div>
                     <div></div>
-                    
-                    <div className="align-items-center"><input  onChange={(event) => onCheckbox(event, task)} type="checkbox" id="complete" checked={task.complete} />
-                    <label className="ms-2 " htmlFor="complete ">complete?</label>  </div>
+
+                    <div className="align-items-center"><input onChange={(event) => onCheckBox(event, task)}
+                        type="checkbox" id="complete" checked={task.complete} />
+                        <label className="ms-2 " htmlFor="complete ">complete?</label>  </div>
                     <div className="" style={task.complete ? { textDecoration: 'line-through' } : {}}> </div>
                     <div className="">
                         <div className="card ">
-                            <button className=" btn btn-secondary mt-1" onClick={() => {}}>Editar<i className=""></i> </button>
+                            <button className=" btn btn-secondary mt-1" > Editar<i className=""></i> </button>
                             <button className="btn btn-warning mt-2" onClick={() => onDelete(task)}>Delete<i className=""></i> </button>
                         </div>
                     </div>
                 </div>
             })}
+        {/* onChange={(e) => onCheckBox(e, note)} */}
         </div>
     )
 }
