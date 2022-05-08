@@ -46,7 +46,7 @@ const Form = () => {
         <form ref={formRef}>
 
             <input onChange={addingCategory} type="text" name="message" />
-            <button onClick={onAdd}>Add Category</button>
+            <button className="btn btn-success" onClick={onAdd}>Add Category</button>
         </form>
     )
 }

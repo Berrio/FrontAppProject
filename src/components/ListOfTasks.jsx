@@ -3,11 +3,25 @@ import { Store } from './StoreProvider'
 
 const ListOfTasks = (props) => {
 
-    
+    const { state, dispatch } = useContext(Store)
+
+    const onDelete = async (idtask) => {
+        let response = await fetch(`http://localhost:8081/api/delete/task/${idtask.id}`,
+            {
+                method: 'DELETE'
+            })
+        if (response.status === 200) {
+            console.log("entro")
+            dispatch({
+                type: 'remove-task',
+                payload: idtask
+            })
+        }
+    }
 
     return (
         <div className='card'>
-            {props.notes.map(task => {
+            {props.tasks.map(task => {
                 return <div className="" key={task.id}>
                     <div>{task.id}<h5>{task.task}</h5> </div>
                     <div></div>

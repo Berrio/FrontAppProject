@@ -29,10 +29,10 @@ function reducer(state, action) {
                 ...state, listOfNotes: newListOfNotesAddedOne
             }
             return newStateAddNote
-        case 'remove-note':
-            const newListofNotesWithoutPayloadNote = state.listOfNotes.filter(note => note.id !== action.payload.id)
-            const newStateWithNoteDeleted = { ...state, listOfNotes: newListofNotesWithoutPayloadNote }
-            return newStateWithNoteDeleted
+        case 'remove-task':
+            const newListofTasksWithoutPayloadTask = state.listOfCategories.filter(task => task.id !== action.payload.id)
+            const newStateWithTaskDeleted = { ...state, listOfCategories: newListofTasksWithoutPayloadTask }
+            return newStateWithTaskDeleted
         case 'update-note':
             const newListofNotes = state.listOfNotes.map(note => {
                 if (note.id == action.payload.id) {
