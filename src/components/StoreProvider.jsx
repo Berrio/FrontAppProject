@@ -4,9 +4,9 @@ import reducer from "./Reducer";
 const initialState={
     note:{
         id:'',
-        title:'',
-        message:'',
-        done:false
+        category:'',
+        listTask:[],
+       
     },
     listOfCategorys:[]
 }

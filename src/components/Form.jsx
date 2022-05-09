@@ -24,7 +24,7 @@ const Form = () => {
             let noteSaved = await noteSavePromise.json();
             console.log(noteSaved)
             dispatch({
-                type: 'add-note',
+                type: 'add-category',
                 payload: noteSaved
             })
             formRef.current.reset();

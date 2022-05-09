@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import StoreProvider from './components/StoreProvider'
 import './App.css'
-import ListOfToDo from './components/ListOfCategorys'
+import ListOfCategorys from './components/ListOfCategorys'
 import Form from './components/Form'
 
 function App() {
@@ -9,9 +9,7 @@ function App() {
   return (
     <StoreProvider>
      <Form></Form>
-     <ListOfToDo />
-    
-
+     <ListOfCategorys />
     </StoreProvider>
   )
 }

@@ -37,7 +37,7 @@ const ListOfToDo = () => {
         console.log(response)
         if (response.status === 200) {
             dispatch({
-                type: 'remove-note',
+                type: 'remove-category',
                 payload: note
             })
         }
