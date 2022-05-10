@@ -5,7 +5,6 @@ const Form = () => {
 
     const formRef = useRef(null)
 
-
     const onAdd = async (event) => {
         event.preventDefault();
         if (category) {
@@ -22,6 +21,7 @@ const Form = () => {
                 })
 
             let noteSaved = await noteSavePromise.json();
+            console.log("noteSaved Form")
             console.log(noteSaved)
             dispatch({
                 type: 'add-category',
@@ -46,8 +46,8 @@ const Form = () => {
         <form ref={formRef}>
 
             <div className="input-group mb-3">
-                <input onChange={addingCategory} name="message" type="text" className="form-control" placeholder="Add new Category" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                    <button onClick={onAdd} className="btn btn-success" type="button" id="button-addon2">Add Category</button>
+                <input onChange={addingCategory} name="message" type="text" className="form-control" placeholder="Add new Category" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                <button onClick={onAdd} className="btn btn-success" type="button" id="button-addon2">Add Category</button>
             </div>
         </form>
     )

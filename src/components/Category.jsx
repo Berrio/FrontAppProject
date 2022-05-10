@@ -18,13 +18,14 @@ const Category = () => {
             })
 
             let CreatedCategory = await CreateSavedPromise.json()
-
+            
             dispatch({
                 type: 'add-categorys',
                 payload: CreatedCategory
+                
             })
 
-            
+
         }
     }
 

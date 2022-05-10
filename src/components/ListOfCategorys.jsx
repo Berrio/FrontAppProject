@@ -51,7 +51,7 @@ const ListOfToDo = () => {
                         <div>{category.id}<h4>{category.category}</h4>
                             <button className="btn btn-danger mt-2" onClick={(e) => onDelete(category)}>Delete</button>
                         </div>
-                        
+
                         <div className="card-body">
                             <TaskForm category={category.id}></TaskForm>
                             <ListOfTasks tasks={category} />

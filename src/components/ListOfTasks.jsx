@@ -22,10 +22,12 @@ const ListOfTasks = (props) => {
     const onCheckBox = async (e, task) => {
         const checked = e.currentTarget.checked;
 
+    
         let noteWithCheckedboxInformation = {
             ...task,
             complete: checked
         }
+
 
         let noteUpdatedPromise = await fetch(`http://localhost:8081/api/update/task`,
             {
@@ -56,18 +58,18 @@ const ListOfTasks = (props) => {
                     <div></div>
 
                     <div className="align-items-center"><input onChange={(event) => onCheckBox(event, task)}
-                        type="checkbox" id="complete" checked={task.complete} />
+                        type="checkbox" id="complete" checked={task.complete}  />
                         <label className="ms-2 " htmlFor="complete ">complete?</label>  </div>
                     <div className="" style={task.complete ? { textDecoration: 'line-through' } : {}}> </div>
                     <div className="">
                         <div className="card ">
-                            <button className=" btn btn-secondary mt-1" > Editar<i className=""></i> </button>
-                            <button className="btn btn-warning mt-2" onClick={() => onDelete(task)}>Delete<i className=""></i> </button>
+                            <button className=" btn btn-secondary mt-1" disabled={task.complete} > Editar<i className=""></i> </button>
+                            <button className="btn btn-warning mt-2"  onClick={() => onDelete(task)}>Delete<i className=""></i> </button>
                         </div>
                     </div>
                 </div>
             })}
-        {/* onChange={(e) => onCheckBox(e, note)} */}
+            {/* onChange={(e) => onCheckBox(e, note)} */}
         </div>
     )
 }

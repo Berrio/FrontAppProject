@@ -21,13 +21,13 @@ const TaskForm = (props) => {
             })
 
             let noteSaved = await noteSavedPromise.json();
-
+           
             dispatch({
                 type: 'add-task',
                 payload: noteSaved
             })
 
-            
+
         }
     }
 
@@ -44,7 +44,7 @@ const TaskForm = (props) => {
         <div className='container'>
             <form >
                 <div className="input-group mb-3">
-                    <input onChange={addingtask} name="message" type="text" className="form-control mt-2 me-2" 
+                    <input onChange={addingtask} name="message" type="text" className="form-control mt-2 me-2"
                         placeholder="Insert New Task" aria-label="Recipient's username" aria-describedby="button-addon2" />
                     <button onClick={onAdd} className="btn btn-success mt-2 me-3" type="button" id="button-addon2">Add Task</button>
                 </div>

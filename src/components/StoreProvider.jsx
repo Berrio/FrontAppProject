@@ -1,28 +1,28 @@
-import React, { createContext,useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 import reducer from "./Reducer";
 
-const initialState={
+const initialState = {
+    
     note:{
         id:'',
-        category:'',
-        listTask:[],
-       
+        name:'',
+        listOfTasks: [{id:"",task:"",complte:"",fkTasktId:"" }],
     },
     listOfCategorys:[]
 }
 
-const Store= createContext(initialState)
+const Store = createContext(initialState)
 
-const StoreProvider=({children})=>{
+const StoreProvider = ({ children }) => {
 
-    const [state,dispatch]=useReducer(reducer,initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
 
-    return(
-        <Store.Provider value={{state,dispatch}}>
+    return (
+        <Store.Provider value={{ state, dispatch }}>
             {children}
         </Store.Provider>
     )
 }
 
 export default StoreProvider
-export {Store,initialState}
+export { Store, initialState }
